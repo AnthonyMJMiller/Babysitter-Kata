@@ -1,18 +1,22 @@
 package babysitterFiles;
 
 public class Babysitter {
-	
+
 	private int timeStart;
 	private int bedTime;
 	private int timeEnd;
-	
+
+	public Babysitter() {
+
+	}
+
 //	public Babysitter() {
 //		timeStart = 0;
 //        timeEnd = 11;
 //        bedTime = 5;
 //        CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
 //    }
-	
+
 	public Babysitter(int timeStart, int bedTime, int timeEnd) {
 		shiftStartValidation(timeStart);
 		shiftEndValidation(timeStart, timeEnd);
@@ -21,8 +25,7 @@ public class Babysitter {
 		this.timeEnd = timeEnd;
 //		CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
 	}
-	
-	
+
 	public int timeConversion(int timeEntered) {
 
 		if (timeEntered <= 12 && timeEntered >= 5) {
@@ -31,15 +34,15 @@ public class Babysitter {
 			return timeEntered + 7;
 
 	}
-	
+
 	public String shiftStartValidation(int timeStart) {
-		if (timeConversion(timeStart) < 11) {
-            return "This start time is available.";
-        } else {
-        	return "This start time is not available.";
-        }
+		if (timeConversion(timeStart) < 11 && timeStart > 4) {
+			return "This start time is available.";
+		} else {
+			return "This start time is not available.";
+		}
 	}
-	
+
 	public String shiftEndValidation(int timeEnd, int timeStart) {
 		if (timeConversion(timeEnd) > timeConversion(timeStart)) {
 			return "This end time is available.";

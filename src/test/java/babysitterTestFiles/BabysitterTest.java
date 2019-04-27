@@ -34,7 +34,7 @@ public class BabysitterTest {
 	@Test
 	public void verifyErrorMessageIfInvalidStartTime() {
 		Babysitter babySitter = new Babysitter(4, 12, 4);
-		assertEquals("This start time is not available.", babySitter.shiftStartValidation(4));
+		assertEquals("This start time is not available.", babySitter.shiftStartValidation(3));
 	}
 	
 	public void validateBabySitterEnteredAcceptableEndTime() {
