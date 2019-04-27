@@ -1,52 +1,53 @@
 package babysitterTestFiles;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import babysitterFiles.Babysitter;
 
 public class BabysitterTest {
+	
+	private Babysitter sitterTester;
+	
+	@Before
+	public void startupOnEachTest() {
+		sitterTester = new Babysitter();
+	}
 
 	@Test
-	public void validateTimeConversionFrom5pmto0() {
-        Babysitter babySitter = new Babysitter(5, 12, 4);
-        assertEquals(0, babySitter.timeConversion(5));
+	public void validateTimeConversionFrom5pmto1() {
+        assertEquals(1, sitterTester.timeConversion(5));
     }
 	
 	@Test
-	public void validateTimeConversionFrom4amto11() {
-		Babysitter babySitter = new Babysitter(5, 12, 4);
-		assertEquals(11, babySitter.timeConversion(4));
+	public void validateTimeConversionFrom4amto12() {
+		assertEquals(12, sitterTester.timeConversion(4));
 	}
 	
 	@Test
-	public void validateTimeConversionFrom12pmto7() {
-		Babysitter babySitter = new Babysitter(5, 12, 4);
-		assertEquals(7, babySitter.timeConversion(12));
+	public void validateTimeConversionFrom12pmto8() {
+		assertEquals(8, sitterTester.timeConversion(12));
 	}
 	
 	@Test
 	public void validateBabySitterEnteredAcceptableStartTime() {
-		Babysitter babySitter = new Babysitter(6, 10, 2);
-		assertEquals("This start time is available.", babySitter.shiftStartValidation(6));
+		assertEquals("This start time is available.", sitterTester.shiftStartValidation(6));
 	}
 	
 	@Test
 	public void verifyErrorMessageIfInvalidStartTime() {
-		Babysitter babySitter = new Babysitter(4, 12, 4);
-		assertEquals("This start time is not available.", babySitter.shiftStartValidation(3));
+		assertEquals("This start time is not available.", sitterTester.shiftStartValidation(3));
 	}
 	
 	@Test
 	public void validateBabySitterEnteredAcceptableEndTime() {
-		Babysitter babySitter = new Babysitter(6, 10, 2);
-		assertEquals("This end time is available.", babySitter.shiftEndValidation(2, 6));
+		assertEquals("This end time is available.", sitterTester.shiftEndValidation(2, 6));
 	}
 	
 	@Test
 	public void verifyErrorMessageIfInvalidEndTime() {
-		Babysitter babySitter = new Babysitter(7, 12, 6);
-		assertEquals("This end time is not available.", babySitter.shiftEndValidation(6, 7));
+		assertEquals("This end time is not available.", sitterTester.shiftEndValidation(6, 7));
 	}
 
 }

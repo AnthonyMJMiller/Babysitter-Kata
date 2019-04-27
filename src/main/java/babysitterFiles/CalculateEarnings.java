@@ -2,9 +2,7 @@ package babysitterFiles;
 
 public class CalculateEarnings {
 
-//	private int regularRateEarned;
-//	private int bedtimeRateEarned;
-//	private int midnightRateEarned;
+
 	private Babysitter babySitter = new Babysitter();
 	
 	public CalculateEarnings() {

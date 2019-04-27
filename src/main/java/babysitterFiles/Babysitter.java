@@ -10,28 +10,12 @@ public class Babysitter {
 
 	}
 
-//	public Babysitter() {
-//		timeStart = 0;
-//        timeEnd = 11;
-//        bedTime = 5;
-//        CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
-//    }
-
-	public Babysitter(int timeStart, int bedTime, int timeEnd) {
-		shiftStartValidation(timeStart);
-		shiftEndValidation(timeStart, timeEnd);
-		this.timeStart = timeStart;
-		this.bedTime = bedTime;
-		this.timeEnd = timeEnd;
-//		CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
-	}
-
 	public int timeConversion(int timeEntered) {
 
 		if (timeEntered <= 12 && timeEntered >= 5) {
-			return timeEntered - 5;
+			return timeEntered - 4;
 		} else
-			return timeEntered + 7;
+			return timeEntered + 8;
 
 	}
 
