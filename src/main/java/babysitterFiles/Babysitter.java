@@ -14,14 +14,16 @@ public class Babysitter {
 //    }
 	
 	public Babysitter(int timeStart, int bedTime, int timeEnd) {
-		shiftValidation(timeStart, timeEnd);
+		shiftStartValidation(timeStart);
+		shiftEndValidation(timeStart, timeEnd);
 		this.timeStart = timeStart;
 		this.bedTime = bedTime;
 		this.timeEnd = timeEnd;
 //		CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
 	}
 	
-	public int convertTime(int timeEntered) {
+	
+	public int timeConversion(int timeEntered) {
 
 		if (timeEntered <= 12 && timeEntered >= 5) {
 			return timeEntered - 5;
@@ -30,14 +32,19 @@ public class Babysitter {
 
 	}
 	
-	public String shiftValidation(int timeStart, int timeEnd) {
-		if (convertTime(timeStart) > 11) {
-            return "This start time is not available.";
-        } else if (convertTime(timeEnd) < convertTime(timeStart)) {
-            return "This end time is not available.";
+	public String shiftStartValidation(int timeStart) {
+		if (timeConversion(timeStart) < 11) {
+            return "This start time is available.";
         } else {
-        	return "Shift time is confirmed.";
+        	return "This start time is not available.";
         }
+	}
+	
+	public String shiftEndValidation(int timeEnd, int timeStart) {
+		if (timeConversion(timeEnd) > timeConversion(timeStart)) {
+			return "This end time is available.";
+		} else
+			return "This end time is not available.";
 	}
 
 	public int getTimeStart() {
