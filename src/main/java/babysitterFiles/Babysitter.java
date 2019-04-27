@@ -6,12 +6,12 @@ public class Babysitter {
 	private int bedTime;
 	private int timeEnd;
 	
-	public Babysitter() {
-		timeStart = 17;
-        timeEnd = 4;
-        bedTime = 21;
+//	public Babysitter() {
+//		timeStart = 0;
+//        timeEnd = 11;
+//        bedTime = 5;
 //        CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
-    }
+//    }
 	
 	public Babysitter(int timeStart, int bedTime, int timeEnd) {
 		shiftValidation(timeStart, timeEnd);
@@ -21,13 +21,22 @@ public class Babysitter {
 //		CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
 	}
 	
+	public int convertTime(int timeEntered) {
+
+		if (timeEntered <= 12 && timeEntered >= 5) {
+			return timeEntered - 5;
+		} else
+			return timeEntered + 7;
+
+	}
+	
 	public String shiftValidation(int timeStart, int timeEnd) {
-		if (timeStart < 17 && timeStart > 4) {
-            return "This start time is not available";
-        } else if (timeEnd < 17 && timeEnd > 4) {
-            return "This end time is not available";
+		if (convertTime(timeStart) > 11) {
+            return "This start time is not available.";
+        } else if (convertTime(timeEnd) < convertTime(timeStart)) {
+            return "This end time is not available.";
         } else {
-        	return null;
+        	return "Shift time is confirmed.";
         }
 	}
 

@@ -8,23 +8,39 @@ import babysitterFiles.Babysitter;
 public class BabysitterTest {
 
 	@Test
-	public void validateBabySitterDefaultShiftTime() {
-        Babysitter babySitter = new Babysitter();
-        assertEquals(17, babySitter.getTimeStart());
-        assertEquals(4, babySitter.getTimeEnd());
-        assertEquals(21, babySitter.getBedTime());
+	public void validateTimeConversionFrom5pmto0() {
+        Babysitter babySitter = new Babysitter(5, 7, 4);
+        assertEquals(0, babySitter.convertTime(5));
     }
 	
 	@Test
-	public void validateUserEnteredStartTimeAndIsReturned() {
-		Babysitter babySitter = new Babysitter(19, 21, 2);
-		assertEquals(19, babySitter.getTimeStart());
+	public void validateTimeConversionFrom4amto11() {
+		Babysitter babySitter = new Babysitter(5, 7, 4);
+		assertEquals(11, babySitter.convertTime(4));
 	}
 	
 	@Test
-	public void validateUserEnteredEndTimeAndIsReturned() {
-		Babysitter babySitter = new Babysitter(18, 21, 3);
-		assertEquals(2, babySitter.getTimeEnd());
+	public void validateTimeConversionFrom12pmto7() {
+		Babysitter babySitter = new Babysitter(5, 12, 4);
+		assertEquals(7, babySitter.convertTime(12));
+	}
+	
+	@Test
+	public void validateBabySitterEnteredAcceptableShiftTime() {
+		Babysitter babySitter = new Babysitter(6, 10, 2);
+		assertEquals("Shift time is confirmed.", babySitter.shiftValidation(6, 2));
+	}
+	
+	@Test
+	public void verifyErrorMessageIfInvalidStartTime() {
+		Babysitter babySitter = new Babysitter(3, 12, 4);
+		assertEquals("This start time is not available.", babySitter.shiftValidation(3, 4));
+	}
+	
+	@Test
+	public void verifyErrorMessageIfInvalidEndTime() {
+		Babysitter babySitter = new Babysitter(7, 12, 6);
+		assertEquals("This end time is not available.", babySitter.shiftValidation(7, 6));
 	}
 
 }
