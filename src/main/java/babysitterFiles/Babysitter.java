@@ -10,7 +10,7 @@ public class Babysitter {
 		timeStart = 17;
         timeEnd = 4;
         bedTime = 21;
-        TimeCalculation = new TimeCalculation(timeStart, timeEnd, bedTime);
+//        CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
     }
 	
 	public Babysitter(int timeStart, int bedTime, int timeEnd) {
@@ -18,14 +18,16 @@ public class Babysitter {
 		this.timeStart = timeStart;
 		this.bedTime = bedTime;
 		this.timeEnd = timeEnd;
-		TimeCalculation = new TimeCalculation(timeStart, timeEnd, bedTime);
+//		CalculateEarnings = new CalculateEarnings(timeStart, timeEnd, bedTime);
 	}
 	
-	public void shiftValidation(int timeStart, int timeEnd) {
+	public String shiftValidation(int timeStart, int timeEnd) {
 		if (timeStart < 17 && timeStart > 4) {
-            System.out.println("This start time is not available");
+            return "This start time is not available";
         } else if (timeEnd < 17 && timeEnd > 4) {
-            System.out.println("This end time is not available");
+            return "This end time is not available";
+        } else {
+        	return null;
         }
 	}
 
@@ -40,9 +42,5 @@ public class Babysitter {
 	public int getTimeEnd() {
 		return timeEnd;
 	}
-
-	
-	
-	
 
 }
