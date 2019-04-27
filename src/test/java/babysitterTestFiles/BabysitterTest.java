@@ -37,9 +37,10 @@ public class BabysitterTest {
 		assertEquals("This start time is not available.", babySitter.shiftStartValidation(3));
 	}
 	
+	@Test
 	public void validateBabySitterEnteredAcceptableEndTime() {
 		Babysitter babySitter = new Babysitter(6, 10, 2);
-		assertEquals("This end time is available.", babySitter.shiftEndValidation(6, 2));
+		assertEquals("This end time is available.", babySitter.shiftEndValidation(2, 6));
 	}
 	
 	@Test

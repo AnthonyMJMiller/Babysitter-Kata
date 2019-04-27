@@ -2,9 +2,9 @@ package babysitterFiles;
 
 public class CalculateEarnings {
 
-	private int regularRateEarned;
-	private int bedtimeRateEarned;
-	private int midnightRateEarned;
+//	private int regularRateEarned;
+//	private int bedtimeRateEarned;
+//	private int midnightRateEarned;
 	private Babysitter babySitter = new Babysitter();
 	
 	public CalculateEarnings() {
@@ -40,7 +40,7 @@ public class CalculateEarnings {
 
 	}
 
-	public int calculateShiftEarnings(int timeStart, int bedTime, int timeEnd) {
+	public int calculateShiftEarnings(int timeStart, int bedTime, int timeEnd, int regularRateEarned, int bedtimeRateEarned, int midnightRateEarned) {
 		return (calculateRegularShiftHoursWorked(timeStart, bedTime, timeEnd) * regularRateEarned)
 				+ (calculateBedtimeShiftHoursWorked(timeStart, bedTime) * bedtimeRateEarned)
 				+ (calculateMidnightShiftHoursWorked(timeEnd) * midnightRateEarned);
